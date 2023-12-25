@@ -1,0 +1,99 @@
+<>
+<div className="col-lg-3">
+  <div className="card" key={guide.id}>
+    <img
+    src={trip.coverPhotograph}
+      className="card-img-top"
+      alt="..."
+    />
+    <div className="card-body">
+      <p>
+        {" "}
+        <Icon.GeoAlt className="text-info fs-5" />{" "}
+        <span className="align-middle"> {trip.location}</span>
+      </p>
+      <p className="card-text">Description: {trip.description}</p>
+      <div className="mb-3">
+        <span className="badge rounded-pill bg-info text-light border-primary align-middle me-2">
+          <Icon.Calendar className="text-light fs-6" />{" "}
+          <span className="align-middle">{trip.date}</span>
+        </span>
+        <span className="badge rounded-pill bg-info text-light border-primary align-middle me-2">
+          <Icon.People className="text-light fs-6" />
+          <span className="align-middle"> {trip.capacity}</span>
+        </span>
+        <span className="badge rounded-pill bg-info text-light border-primary align-middle me-2">
+          <Icon.Clock className="text-light fs-6" />
+          <span className="align-middle"> {trip.duration}</span>
+        </span>
+        <span className="badge rounded-pill bg-info text-light border-primary align-middle me-2">
+          <Icon.CarFront className="text-light fs-6" />
+          <span className="align-middle">
+            {" "}
+            {trip.transportation}
+          </span>
+        </span>
+      </div>
+      <p>
+        {" "}
+        <Icon.CurrencyDollar className="text-info fs-5" />{" "}
+        <span className="align-middle"> {trip.cost}</span>
+      </p>
+      <div>
+        {trip.tags.map((tag, index) => (
+          <span key={index} className="badge badge-primary">
+            {tag}
+          </span>
+        ))}
+      </div>
+
+      <Link className="btn btn-info text-light" to={trip._id}>
+        Book trip
+      </Link>
+    </div>
+  </div>
+  {guide.id}
+</div>
+</>
+
+<div className="card" key={guide.id}>  
+<div className="row g-0 ">
+  <div className="col-md-4">
+    <img
+      src={guide.guideProfileImage}
+      className="img-fluid rounded-start"
+      alt="..."
+    />
+  </div>
+  <div className="col-md-8 mt-5">
+    <div className="card-body">
+    <h5 className="card-title fs-2 text-primary">{guide.guideUsername}</h5>
+                  <p className="card-text">
+                    <span className="align-middle">
+                      <Icon.Calendar className="text-primary fs-5" />{" "}
+                      {guide.guideBirthDate}
+                    </span>
+                  </p>
+                  <div className="my-3">
+                    <span className="align-middle">
+                      <Icon.GeoAlt className="text-primary fs-5" />{" "}
+                      {guide.guideLocation}
+                    </span>
+                  </div>{" "}
+                  <div>
+                    {guide.guideInterests.map((interest, index) => (
+                      <span key={index} className="badge bg-primary me-2">
+                        {interest}
+                      </span>
+                    ))}
+                  </div>
+                  <div className="mt-3">
+                  <Link className="text-primary" to={`/view-guide/${userId}/${guide._id}`}>View profile</Link>
+                  </div>
+
+
+ 
+    </div>
+  </div>
+
+</div></div>
