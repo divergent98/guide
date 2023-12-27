@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef  } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-
+import { Link } from "react-router-dom";
 const initialState = {
   userFirstName: "",
   userLastName: "",
@@ -23,46 +23,33 @@ const RegisterUser = () => {
   const [path, setPath] = useState(""); // Initialize path as an empty string
   const pathArray = []; // If you want to store multiple paths as an array
   const [pathArrayState, setPathArrayState] = useState([]);
+  const [message, setMessage] = useState("");
   const cloudinaryRef = useRef();
   const widgetRef = useRef();
   const interests = [
     "Hiking",
-    "Concerts and Entertainment",
     "Paragliding",
     "Culinary Experiences",
-    "Backpacking",
     "Photography Tours",
     "Camping",
     "Museum and Gallery Visits",
     "Zipline",
-    "Nature and Wildlife Tours",
     "Rock Climbing",
-    "Golfing",
     "Horseback Riding",
     "Beach Relaxation",
-    "Outdoor Photography",
     "Fishing",
-    "Language and Cooking Classes",
     "Geocaching",
     "Sightseeing",
     "Bungee Jumping",
-    "Wildlife Safari",
     "Parachuting",
     "Whitewater Kayaking",
-    "Survival Skills Training",
     "Skiing",
-    "Horse-Drawn Carriage Rides",
     "Shopping",
     "City Tours",
-    "Cruise Trips",
     "Spa and Wellness",
-    "Hot Air Balloon",
-    "Historical Reenactments",
-    "Festivals",
     "Cultural and Heritage Tours",
     "Cycling Tours",
     "Train Journeys",
-    "Skydiving",
     "Wine and Brewery Tours",
   ];
   const toggleInterest = (interest) => {
@@ -214,57 +201,97 @@ const RegisterUser = () => {
     }
   }
   formState.userProfileImage = pathArrayState[0];
+  function removeImage() {
+    setInput("userProfileImage", "");
+    setMessage("");
+    window.location.reload();
+  }
+  function uploadImage() {
+    widgetRef.current.open();
+    setMessage("click on the image to remove");
+  }
   return (
-    <div className="container">
-      <section className="section register min-vh-100 d-flex flex-column align-items-center justify-content-center py-4">
-        <div className="container">
+    <div className=" registration-background">
+    
+        <div className="container pt-4">
           <div className="row justify-content-center">
-            <div className="col-lg-4 col-md-6 d-flex flex-column align-items-center justify-content-center">
-              <div className="card mb-3">
+          <div className="col-lg-6 m-auto">
+          <div className="pt-4 pb-2">
+            <h5 className="card-title text-left pb-0 font-size-42 text-light font-weight-bold franklin">
+              Create an Account to<br>
+              </br>
+              Register as a User
+            </h5>
+            <p className="text-left small  text-light franklin font-size-18">
+              Enter your personal details to create user account
+            </p>
+
+            <p className="text-left small  text-light franklin font-size-18 mb-0 ">
+             You already have an account? <Link className="color-blue-gray" to="/user-login">Log in here</Link> .
+            </p>
+            <p className="text-left small  text-light franklin font-size-18 mt-0 pt-0">
+             Do you want to  <Link className="color-blue-gray" to="/register-guide">register as a guide</Link>?
+            </p>
+                </div>
+        </div>
+            <div className="col-lg-6 col-md-6 d-flex flex-column align-items-center justify-content-center">
+              <div className="card mb-3 custom-card-registration">
                 <div className="card-body">
-                  <div className="pt-4 pb-2">
-                    <h5 className="card-title text-center pb-0 fs-4">
-                      Create an Account
-                    </h5>
-                    <p className="text-center small">
-                      Enter your personal details to create an account
-                    </p>
-                  </div>
+               
                   <div className="row g-3">
-                    <div
-                      id="first"
+                
+                  <div className="col-12 mt-3">
+                  <div className="row justify-content-center">
+                    {" "}
+                    <div className="col-3 mt-3">
+                      <img
+                        onClick={removeImage}
+                        data-bs-toggle="tooltip"
+                        data-bs-placement="right"
+                        data-bs-original-title="Tooltip on right"
+                        className="profile-image-registration"
+                        src={formState.guideProfileImage}
+                      ></img>
+
+                      <input
+                        className="form-control hidden"
+                        onChange={(event) =>
+                          setInput("userProfileImage", event.target.value)
+                        }
+                        value={formState.userProfileImage}
+                        placeholder="Profile Image"
+                      />
+                    </div>
+                  </div>{" "}
+                  <div className="row justify-content-center text-center">
+                    <div className="col-6">
+                      {" "}
+                      <p className="franklin font-size-12 color-midnight-blue">
+                        {message}
+                      </p>
+                    </div>
+                  </div>
+                  <div className="row justify-content-center">
+                    {" "}
+                    <div className="col-2 ">
+                      <button
+                        className="view-button border border-1 border-color-midnight franklin color-midnight-blue"
+                        onClick={uploadImage}
+                      >
+                        Upload
+                      </button>
+                      {formErrors.userProfileImage && (
+                        <p className="text-danger">
+                          {formErrors.userProfileImage}
+                        </p>
+                      )}
+                    </div>
+                  </div>
+                </div>
+                      <div className="col-4">
                    
-                    >
-                      <div className="col-12">
-                        <label className="form-label">Profile Image</label>
-                        <div className="col-2">
-                          <button
-                            className="w-100 btn btn-success custom-border-right"
-                            onClick={() => widgetRef.current.open()}
-                          >
-                            Upload
-                          </button>
-                        </div>
-                        <div className="col-10">
-                          <input
-                            className="form-control"
-                            onChange={(event) =>
-                              setInput("userProfileImage", event.target.value)
-                            }
-                            value={formState.userProfileImage}
-                            placeholder="Profile Image"
-                          />
-                        </div>
-                        {formErrors.userProfileImage && (
-                          <p className="text-danger">
-                            {formErrors.userProfileImage}
-                          </p>
-                        )}
-                      </div>
-                      <div className="col-12">
-                        <label className="form-label">First Name</label>
                         <input
-                          className="form-control"
+                          className="form-control-custom"
                           onChange={(event) =>
                             setInput("userFirstName", event.target.value)
                           }
@@ -277,10 +304,10 @@ const RegisterUser = () => {
                           </p>
                         )}
                       </div>
-                      <div className="col-12">
-                        <label className="form-label">Last Name</label>
+                      <div className="col-4">
+                       
                         <input
-                          className="form-control"
+                          className="form-control-custom"
                           onChange={(event) =>
                             setInput("userLastName", event.target.value)
                           }
@@ -293,10 +320,10 @@ const RegisterUser = () => {
                           </p>
                         )}
                       </div>
-                      <div className="col-12">
-                        <label className="form-label">Username</label>
+                      <div className="col-4">
+               
                         <input
-                          className="form-control"
+                          className="form-control-custom"
                           onChange={(event) =>
                             setInput("userName", event.target.value)
                           }
@@ -307,10 +334,10 @@ const RegisterUser = () => {
                           <p className="text-danger">{formErrors.userName}</p>
                         )}
                       </div>
-                      <div className="col-12">
-                        <label className="form-label">Email</label>
+                      <div className="col-6">
+
                         <input
-                          className="form-control"
+                          className="form-control-custom"
                           onChange={(event) =>
                             setInput("userEmail", event.target.value)
                           }
@@ -320,27 +347,12 @@ const RegisterUser = () => {
                         {formErrors.userEmail && (
                           <p className="text-danger">{formErrors.userEmail}</p>
                         )}
-                      </div>
-                      <div className="col-12">
+                      </div>     
+                      <div className="col-6">
                         {" "}
-                        <label className="form-label">Phone</label>
+                       
                         <input
-                          className="form-control"
-                          onChange={(event) =>
-                            setInput("userPhone", event.target.value)
-                          }
-                          value={formState.userPhone}
-                          placeholder="Phone"
-                        />
-                        {formErrors.userPhone && (
-                          <p className="text-danger">{formErrors.userPhone}</p>
-                        )}
-                      </div>{" "}
-                      <div className="col-12">
-                        {" "}
-                        <label className="form-label">Password</label>
-                        <input
-                          className="form-control"
+                          className="form-control-custom"
                           type="password"
                           onChange={(event) =>
                             setInput("userPassword", event.target.value)
@@ -354,16 +366,28 @@ const RegisterUser = () => {
                           </p>
                         )}
                       </div>
-              
-                    </div>
-                    <div
-                      id="second"
-                     
-                    >
-                      <div className="col-12">
-                        <label className="form-label">Birth Date</label>
+                      <div className="col-6">
+                        {" "}
+                      
                         <input
-                          className="form-control"
+                          className="form-control-custom"
+                          onChange={(event) =>
+                            setInput("userPhone", event.target.value)
+                          }
+                          value={formState.userPhone}
+                          placeholder="Phone"
+                        />
+                        {formErrors.userPhone && (
+                          <p className="text-danger">{formErrors.userPhone}</p>
+                        )}
+                      </div>{" "}
+                 
+              
+                    
+                      <div className="col-6">
+                     
+                        <input
+                          className="form-control-custom"
                           onChange={(event) =>
                             setInput("userBirthDate", event.target.value)
                           }
@@ -377,9 +401,12 @@ const RegisterUser = () => {
                         )}
                       </div>
                       <div className="col-12">
-                        <label className="form-label" htmlFor="userInterests">
-                          Interests (pick your interests)
-                        </label>
+                      <label
+                    className="form-label franklin color-midnight-blue"
+                    htmlFor="guideInterests"
+                  >
+                    Interests (pick your interests):
+                  </label>
                         <div className="interest-buttons">
                           {interests.map((interest) => (
                             <button
@@ -403,12 +430,13 @@ const RegisterUser = () => {
                       </div>
                       <div className="col-12">
                         {" "}
-                        <label className="form-label">About</label>
-                        <input
-                          className="form-control"
+
+                        <textarea
+                          className="form-control-custom"
                           onChange={(event) =>
                             setInput("userAbout", event.target.value)
                           }
+                          rows={5}
                           value={formState.userAbout}
                           placeholder="About"
                         />
@@ -417,7 +445,7 @@ const RegisterUser = () => {
                         )}
                       </div>    <div className="col-12">
                       <button
-                        className="btn btn-primary w-100"
+                        className="btn btn-primary w-100 bg-color-midnight-blue franklin border border-0 rounded-5"
                         onClick={addUser}
                       >
                         Create User
@@ -430,9 +458,9 @@ const RegisterUser = () => {
                 </div>
               </div>
             </div>
-          </div>
-        </div>
-      </section>
+   </div>
+
+    
     </div>
   );
 };

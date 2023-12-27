@@ -30,7 +30,7 @@ body {
   background-position: center;
 }
 .registration-background{
-  background-image: url("../public/background-nature.png");
+  background-image: url("../public/background-nature-2.jpg");
   background-position: center;
   min-height: 100vh;
   background-size: cover;
@@ -65,6 +65,9 @@ body {
 .font-size-42{
   font-size: 42px;
 }
+.font-size-65{
+  font-size: 65px;
+}
 .font-weight-bold{
   font-weight: 900;
 }
@@ -95,6 +98,9 @@ body {
 .border-midnight-blue{
   border-color: var(--midnight-blue) !important;
 }
+.border-mighty-blue{
+  border-color: var(--mighty-blue) !important;
+}
 .letter-spacing{
   letter-spacing: 2px;
 }
@@ -117,7 +123,18 @@ a:hover {
 .border-color-blue-gray{
   border-color: var(--blue-gray) !important;
 }
-
+.center-inner-element{
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  height: 100vh;
+}
+.center-inner-element-2{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
 /*--------------------------------------------------------------
 # Main
 --------------------------------------------------------------*/

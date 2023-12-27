@@ -253,10 +253,10 @@ function RegisterGuide() {
             </p>
 
             <p className="text-left small  text-light franklin font-size-18 mb-0 ">
-             You already have an account? <Link className="color-blue-gray" to="">Log in here</Link> .
+             You already have an account? <Link className="color-blue-gray" to="/login">Log in here</Link> .
             </p>
             <p className="text-left small  text-light franklin font-size-18 mt-0 pt-0">
-             You don't want to be a guide? <Link className="color-blue-gray" to="">Register as User</Link> .
+             You don't want to be a guide? <Link className="color-blue-gray" to="/register-user">Register as User</Link> .
             </p>
                 </div>
         </div>
