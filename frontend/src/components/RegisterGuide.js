@@ -243,7 +243,7 @@ function RegisterGuide() {
       <div className="row  ">
         <div className="col-lg-6 m-auto">
           <div className="pt-4 pb-2">
-            <h5 className="card-title text-left pb-0 font-size-42 text-light font-weight-bold franklin">
+            <h5 className="card-title text-left pb-0 font-size-42 color-midnight-blue font-weight-bold franklin">
               Create an Account to<br>
               </br>
               Register as a Guide

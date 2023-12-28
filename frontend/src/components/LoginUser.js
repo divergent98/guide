@@ -144,7 +144,7 @@ console.log(foundUser)
           <div className="col-lg-6">
             <div className="center-inner-element">
               <div className="pt-4 pb-2">
-                <h5 className="card-title text-left pb-0 font-size-42 text-light font-weight-bold franklin">
+                <h5 className="card-title text-left pb-0 font-size-42 color-midnight-blue font-weight-bold franklin">
                   Discover Your Destination with Local Insight
                 </h5>
                 <p className="text-left small  text-light franklin font-size-18">

@@ -192,7 +192,7 @@ const CreateBlog = ({ guideId }) => {
             className="form-control-custom font-size-14 franklin font-weight-bold text-dark"
             onChange={(event) => setInput("description", event.target.value)}
             value={formState.description}
-            placeholder="Resume"
+            placeholder="Content"
           />
         </div>
         <div className="col-12">

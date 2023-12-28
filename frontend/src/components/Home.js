@@ -13,7 +13,7 @@ export const Home = () => {
               <div className="row">
                 {" "}
                 <div className="col-12">
-                  <h1 className="franklin text-center font-weight-bold font-size-65 color-mighty-blue">
+                  <h1 className="franklin text-center font-weight-bold font-size-65 color-midnight-blue">
                     Share. Connect. Explore.
                   </h1>
                   <p className="franklin text-center font-size-36 color-mighty-blue">
