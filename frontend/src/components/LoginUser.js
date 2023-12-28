@@ -53,16 +53,16 @@ const LoginUser = () => {
     }
 
     let foundUser = null;
-
+    console.log(username, password)
     users.forEach((user) => {
-      if (user.userUsername === username && user.userPassword === password) {
+      if (user.userName === username && user.userPassword === password) {
         foundUser = user;
       }
     });
-
+console.log(foundUser)
     if (foundUser) {
       // Navigate after setting the id
-      navigate(`/single-user/${foundUser.id}`);
+      navigate(`/single-user/${foundUser._id}`);
     } else {
       setLoginError(
         "Invalid credentials. Please check your username and password."

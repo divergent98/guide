@@ -7,7 +7,7 @@ const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [id, setId] = useState("");
-
+  const [loginError, setLoginError] = useState("");
   const [guides, setGuides] = useState([]);
   const navigate = useNavigate();
 
@@ -49,9 +49,11 @@ const Login = () => {
     if (foundGuide) {
       // Navigate after setting the id
       setId(foundGuide.id);
-      navigate(`/single-guide/${foundGuide.id}`);
+      navigate(`/single-guide/${foundGuide._id}`);
     } else {
-      console.log("no such user");
+      setLoginError(
+        "Invalid credentials. Please check your username and password."
+      );
     }
   };
 
@@ -103,6 +105,9 @@ const Login = () => {
                           </div>
 
                           <div className="col-12">
+                          {loginError && (
+                            <p className="text-danger">{loginError}</p>
+                          )}
                             <button
                               className="btn btn-primary w-100 bg-color-midnight-blue franklin border border-0 rounded-5"
                               onClick={customAuth}

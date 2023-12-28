@@ -151,9 +151,6 @@ const RegisterUser = () => {
       errors.userPassword =
         "Password must contain at least one number, one uppercase letter, and one special character.";
     }
-    if (!formState.userProfileImage) {
-      errors.userProfileImage = "Profile Image is required";
-    }
     const birthDatePattern = /^\d{4}-\d{2}-\d{2}$/;
     if (
       !formState.userBirthDate ||
@@ -250,7 +247,7 @@ const RegisterUser = () => {
                         data-bs-placement="right"
                         data-bs-original-title="Tooltip on right"
                         className="profile-image-registration"
-                        src={formState.guideProfileImage}
+                        src={formState.userProfileImage}
                       ></img>
 
                       <input
