@@ -13,23 +13,23 @@ export const Home = () => {
               <div className="row">
                 {" "}
                 <div className="col-12">
-                  <h1 className="franklin text-center font-weight-bold font-size-65 color-midnight-blue">
+                  <h1 className="franklin text-center font-weight-bold font-size-65 color-mighty-blue">
                     Share. Connect. Explore.
                   </h1>
-                  <p className="franklin text-center font-size-36 color-mighty-blue">
-                    Who are you?
+                  <p className="franklin font-size-16 color-mighty-blue letter-spacing text-center text-bold">
+                    WHO ARE YOU?
                   </p>
                 </div>
               </div>
 
               <div className="row">
                 <div className="col-6">
-                <Link to='/login'  className="btn btn-primary w-100 bg-transparent color-mighty-blue franklin border border-1 border-color-mighty-blue rounded-5">
+                <Link to='/login'  className="btn btn-primary w-100 bg-blured color-midnight-blue franklin border border-1 border-midnight-blue rounded-5">
                     Guide
                   </Link>
                 </div>
                 <div className="col-6">
-                  <Link  to="/user-login" className="btn btn-primary w-100 bg-transparent color-mighty-blue franklin border border-1 border-color-mighty-blue rounded-5">
+                  <Link  to="/user-login" className="btn btn-primary w-100 bg-blured color-midnight-blue franklin border border-1 border-midnight-blue rounded-5">
                     User
                   </Link>
                 </div>

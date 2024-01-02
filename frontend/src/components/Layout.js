@@ -35,7 +35,7 @@ const Layout = ({ image, firstName, lastName, id }) => {
                 href="#"
                 data-bs-toggle="dropdown"
               >
-                <img src={image} alt="Profile" className="rounded-circle" />
+                <img src={image} alt="Profile " className="rounded-circle" />
                 <span className="d-none d-md-block dropdown-toggle ps-2">
                   {firstName} {lastName}
                 </span>

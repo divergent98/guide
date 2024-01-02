@@ -126,7 +126,7 @@ const Login = () => {
             <div className="col-lg-6">
               <div className="center-inner-element">
               <div className="pt-4 pb-2">
-            <h5 className="card-title text-left pb-0 font-size-42 color-midnight-blue font-weight-bold franklin">
+            <h5 className="card-title text-left pb-0 font-size-42 color-mighty-blue font-weight-bold franklin">
             Empower Your Expertise, Connect with Explorers
             </h5>
             <p className="text-left small  text-light franklin font-size-18">

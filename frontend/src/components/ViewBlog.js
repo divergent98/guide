@@ -89,15 +89,15 @@ const ViewBlog = () => {
                     />
                   </div>{" "}
                   <div class="quote-container">
-                    <blockquote className="font-size-24 mt-5 baskerville">
-                    {blog.shortDescription}
+                    <blockquote className="font-size-24 text-justify mt-5 baskerville">
+                      {blog.description} 
                     </blockquote>
                   </div>
 
                   <hr></hr>
                   <div className="my-5">
-                    <p className="baskerville font-size-14 color-midnight-blue align-justify">
-                      {blog.description}
+                    <p className="baskerville align-justify font-size-14 color-midnight-blue align-justify">
+                   {blog.shortDescription}
                     </p>
                   </div>
                   <OwlCarousel

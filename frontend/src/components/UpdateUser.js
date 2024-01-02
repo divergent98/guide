@@ -1,16 +1,17 @@
 import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom";
-
+import { HashLink } from "react-router-hash-link";
 import { Link } from "react-router-dom";
-
+import Layout from "./Layout";
+import * as Icon from "react-bootstrap-icons";
 const UpdateUser = () => {
   const { userId } = useParams();
   const navigate = useNavigate();
   const [user, setUser] = useState(null);
   const [formErrors, setFormErrors] = useState({});
   const [selectedInterests, setSelectedInterests] = useState([]);
-  
+  const [message, setMessage] = useState("");
   const [formState, setFormState] = useState({
     userFirstName: "",
     userLastName: "",
@@ -30,42 +31,28 @@ const UpdateUser = () => {
   const widgetRef = useRef();
   const interests = [
     "Hiking",
-    "Concerts and Entertainment",
     "Paragliding",
     "Culinary Experiences",
-    "Backpacking",
     "Photography Tours",
     "Camping",
     "Museum and Gallery Visits",
     "Zipline",
-    "Nature and Wildlife Tours",
     "Rock Climbing",
-    "Golfing",
     "Horseback Riding",
     "Beach Relaxation",
-    "Outdoor Photography",
     "Fishing",
-    "Language and Cooking Classes",
     "Geocaching",
     "Sightseeing",
     "Bungee Jumping",
-    "Wildlife Safari",
     "Parachuting",
     "Whitewater Kayaking",
-    "Survival Skills Training",
     "Skiing",
-    "Horse-Drawn Carriage Rides",
     "Shopping",
     "City Tours",
-    "Cruise Trips",
     "Spa and Wellness",
-    "Hot Air Balloon",
-    "Historical Reenactments",
-    "Festivals",
     "Cultural and Heritage Tours",
     "Cycling Tours",
     "Train Journeys",
-    "Skydiving",
     "Wine and Brewery Tours",
   ];
 
@@ -225,21 +212,80 @@ const UpdateUser = () => {
   function setInput(key, value) {
     setFormState({ ...formState, [key]: value });
   }
-
+  function removeImage() {
+    setInput("userProfileImage", "");
+    setMessage("");
+    window.location.reload();
+  }
+  function uploadImage() {
+    widgetRef.current.open();
+    setMessage("click on the image to remove");
+  }
   return (
     <>
-     <div className='container'>
-        <div className="pagetitle mt-5 ms-3">
-          <h1 >Upate trip</h1>
-          
-        </div>
+      <Layout firstName={user.userFirstName} lastName={user.userLastName} />
+     <div className='container mt-5 pt-5'>
+     <Icon.ArrowBarLeft className="font-size-18 color-blue-gray"/>
+     <HashLink to={`../single-user/${userId}#view-trips`} className="letter-spacing franklin font-size-14 color-blue-gray ps-0 ms-0">
+     BACK TO PROFILE
+        </HashLink>
 
         <section className="section profile">
           <div className="row">
             <div className="col-xl-12">
-              <div className="card px-3 py-5">
+              <div className="card px-3 py-5 custom-card">
       <div>
-        <h2>Update User</h2>
+      <h2 className="franklin font-size-16 color-blue-gray letter-spacing text-center">
+                      UPDATE USER
+                    </h2>
+        <div className="col-12 mt-3">
+                  <div className="center-inner-element-no-height">
+                    {" "}
+                    <div className=" mt-3 ">
+                      <img
+                        onClick={removeImage}
+                        data-bs-toggle="tooltip"
+                        data-bs-placement="right"
+                        data-bs-original-title="Tooltip on right"
+                        className="profile-image-registration"
+                        src={formState.userProfileImage || ""}
+                      ></img>
+
+                      <input
+                        className="form-control hidden"
+                        onChange={(event) =>
+                          setInput("userProfileImage", event.target.value)
+                        }
+                        value={formState.userProfileImage || ""}
+                        placeholder="Profile Image"
+                      />
+                    </div>
+                  </div>{" "}
+                  <div className="center-inner-element-no-height">
+                    <div className="">
+                      {" "}
+                      <p className="franklin font-size-12 color-midnight-blue">
+                        {message}
+                      </p>
+                    </div>
+                  </div>
+                  <div className="center-inner-element-no-height">
+                    {" "}
+                    <div className="">
+                      <button
+                        className="view-button border border-1 border-color-midnight franklin color-midnight-blue"
+                        onClick={uploadImage}
+                      >
+                        Upload
+                      </button>
+                      {formErrors.userProfileImage && (
+                        <p className="text-danger">
+                          {formErrors.userProfileImage}
+                        </p>
+                      )}
+                    </div>
+                  </div>
+                </div>
         <div className="col-12">
         <input
                         className="hidden"
@@ -266,8 +312,8 @@ const UpdateUser = () => {
                         value={formState.userName}
                         placeholder="Username"
                       />
-          <label className="form-label">First Name</label>
-          <input className="form-control"
+          
+          <input className="form-control-custom"
             onChange={(event) => setInput("userFirstName", event.target.value)}
             value={formState.userFirstName || ""}
             placeholder="First Name"
@@ -278,8 +324,8 @@ const UpdateUser = () => {
         </div>
         <div className="col-12">
           {" "}
-          <label className="form-label">Last Name</label>
-          <input className="form-control"
+        
+          <input className="form-control-custom"
             onChange={(event) => setInput("userLastName", event.target.value)}
             value={formState.userLastName || ""}
             placeholder="Last Name"
@@ -290,8 +336,8 @@ const UpdateUser = () => {
         </div>
 
         <div className="col-12">
-          <label className="form-label">Phone</label>
-          <input className="form-control"
+        
+          <input className="form-control-custom"
             onChange={(event) => setInput("userPhone", event.target.value)}
             value={formState.userPhone || ""}
             placeholder="Phone"
@@ -303,33 +349,16 @@ const UpdateUser = () => {
 
         <div className="col-12">
           {" "}
-          <label className="form-label">Profile Image</label>
-          <div className="col-2">
-  <button
-    className="w-100 btn btn-success custom-border-right"
-    onClick={() => widgetRef.current.open()}
-  >
-    Upload
-  </button>
-</div>
-<div className="col-10">
-  <input
-    className="form-control"
-    onChange={(event) =>
-      setInput("userProfileImage", event.target.value)
-    }
-    value={formState.userProfileImage ? formState.userProfileImage : ""}
-    placeholder="Profile Image"
-  />
-</div>
+         
+
           {formErrors.userProfileImage && (
             <p className="text-danger">{formErrors.userProfileImage}</p>
           )}
         </div>
         <div className="col-12">
           {" "}
-          <label className="form-label">Birth Date</label>
-          <input className="form-control"
+        
+          <input className="form-control-custom"
             onChange={(event) => setInput("userBirthDate", event.target.value)}
             value={formState.userBirthDate || ""}
             placeholder="Birth Date"
@@ -339,32 +368,46 @@ const UpdateUser = () => {
           )}
         </div>
         <div className="col-12">
-          <label className="form-label">Interests</label>
-          <input className="form-control"
-            onChange={(event) =>
-              setInput("userInterests", event.target.value.split(","))
-            }
-            value={formState.userInterests.join(",") || ""}
-            placeholder="Interests (comma-separated)"
-          />
-          {formErrors.userInterests && (
-            <p className="text-danger">{formErrors.userInterests}</p>
-          )}
-        </div>
+                        <label className="mt-3 form-label franklin color-midnight-blue" htmlFor="guideInterests">
+                          Interests (pick your interests)
+                        </label>
+                        <div className="interest-buttons">
+                          {interests.map((interest) => (
+                            
+                            <button
+                              key={interest}
+                              className={`btn interest-button ${
+                                selectedInterests.includes(interest)
+                                  ? "selected"
+                                  : ""
+                              }`}
+                              onClick={() => toggleInterest(interest)}
+                            >
+                              {interest}
+                            </button>
+                          ))}
+                        </div>
+                        {formErrors.guideInterests && (
+                          <p className="text-danger">
+                            {formErrors.guideInterests}
+                          </p>
+                        )}
+                      </div>
         <div className="col-12">
-          <label className="form-label">About</label>
-          <input className="form-control"
+       
+          <textarea className="form-control-custom mt-3"
             onChange={(event) => setInput("userAbout", event.target.value)}
             value={formState.userAbout || ""}
             placeholder="About"
+            rows={5}
           />
           {formErrors.userAbout && (
             <p className="text-danger">{formErrors.userAbout}</p>
           )}
         </div>
       </div>
-            <div className="col-12">
-      <button className="btn btn-primary my-5" onClick={updateUserFunc}>
+            <div className="col-12 center-inner-element-no-height">
+      <button className="mt-5 btn btn-primary w-25 bg-color-midnight-blue franklin border border-0 rounded-5" onClick={updateUserFunc}>
         Update User
       </button></div>
       </div>

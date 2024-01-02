@@ -54,7 +54,7 @@ const SingleGuide = () => {
   }
   return (
     <>
-      <Layout image={guide.guideImage} firstName={guide.guideFirstName} lastName={guide.guideLastName} />
+     <Layout image={guide.guideProfileImage} firstName={guide.guideFirstName} lastName={guide.guideLastName} />
       <div className="container mt-5">
         <div className="pagetitle mt-5">
           <h1 className="mt-5 pt-5">Profile</h1>

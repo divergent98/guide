@@ -6,7 +6,7 @@ import { useParams, useNavigate, Link } from "react-router-dom";
 import { HashLink } from "react-router-hash-link";
 import Layout from "./Layout";
 import TripsGuide from "./TripsGuide";
-
+import backgroundImage from "../nature-5.jpg"
 const ViewGuide = () => {
   const { guideId, userId } = useParams();
   const [guide, setGuide] = useState(null);
@@ -63,7 +63,7 @@ console.log(userId)
                       </h2>
                     </div>
                     <img
-                      src="https://images.unsplash.com/photo-1508247967583-7d982ea01526?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2250&q=80"
+                      src={backgroundImage}
                       alt=""
                       className="profile-cover mb-5"
                     />

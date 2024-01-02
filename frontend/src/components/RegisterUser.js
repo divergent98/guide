@@ -223,7 +223,7 @@ const RegisterUser = () => {
               Enter your personal details to create user account
             </p>
 
-            <p className="text-left small color-midnight-blue franklin font-size-18 mb-0 ">
+            <p className="text-left small color-mighty-blue franklin font-size-18 mb-0 ">
              You already have an account? <Link className="color-blue-gray" to="/user-login">Log in here</Link> .
             </p>
             <p className="text-left small  text-light franklin font-size-18 mt-0 pt-0">

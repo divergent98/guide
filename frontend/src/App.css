@@ -30,11 +30,14 @@ body {
   background-position: center;
 }
 .registration-background{
-  background-image: url("../public/nature-vector.jpg");
+  background-image: url("../public/nature-6.jpg");
   background-position: center;
   min-height: 100vh;
   background-size: cover;
   }
+.align-justify{
+  text-align: justify;
+}
 .franklin{
   font-family: "Libre Franklin" !important;
 }
@@ -98,6 +101,13 @@ body {
 .border-midnight-blue{
   border-color: var(--midnight-blue) !important;
 }
+.bg-blured{
+  background-color: #c3ceda86;
+  
+}
+.bg-blured:hover{
+  background-color: #c3ceda86
+}
 .border-mighty-blue{
   border-color: var(--mighty-blue) !important;
 }
@@ -135,6 +145,12 @@ a:hover {
   align-items: center;
   height: 100vh;
 }
+.center-inner-element-no-height{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
 /*--------------------------------------------------------------
 # Main
 --------------------------------------------------------------*/
@@ -164,38 +180,6 @@ a:hover {
   color: #012970;
 }
 
-/*--------------------------------------------------------------
-# Back to top button
---------------------------------------------------------------*/
-.back-to-top {
-  position: fixed;
-  visibility: hidden;
-  opacity: 0;
-  right: 15px;
-  bottom: 15px;
-  z-index: 99999;
-  background: #4154f1;
-  width: 40px;
-  height: 40px;
-  border-radius: 4px;
-  transition: all 0.4s;
-}
-
-.back-to-top i {
-  font-size: 24px;
-  color: #fff;
-  line-height: 0;
-}
-
-.back-to-top:hover {
-  background: #6776f4;
-  color: #fff;
-}
-
-.back-to-top.active {
-  visibility: visible;
-  opacity: 1;
-}
 
 /*--------------------------------------------------------------
 # Override some default Bootstrap stylings
